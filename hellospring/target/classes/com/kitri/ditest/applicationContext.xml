@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<bean id = "m1" class = "com.kitri.ditest.MemberDto">
+		<constructor-arg index="1">
+			<value>조윤영</value>
+		</constructor-arg>
+		<constructor-arg index="0">
+			<value>Jo</value>
+		</constructor-arg>
+	</bean>
+	
+	<bean id = "m2" class = "com.kitri.ditest.MemberDto">
+		<constructor-arg value = "홍길동"/>
+		<constructor-arg value = "25" type="int" />
+	</bean>
+	
+	<bean id = "m3" class = "com.kitri.ditest.MemberDto">
+		<constructor-arg value = "조윤영"/>
+		<constructor-arg value = "500000000"  type="double"/>
+	</bean>
+	
+	<bean id = "m4" class = "com.kitri.ditest.MemberDto">
+		<constructor-arg value = "홍길순" index = "1"/>
+		<constructor-arg value = "hong"/>
+		<constructor-arg value = "26"/>
+		<constructor-arg value = "500000000"  type="double"/>
+	</bean>
+	
+	<bean id = "m5" class = "com.kitri.ditest.MemberDto">
+		<constructor-arg value = "홍길순" index = "1"/>
+		<constructor-arg value = "hong"/>
+		<constructor-arg value = "26"/>
+		<constructor-arg value = "500000000"  type="double"/>
+		<constructor-arg ref="address1"/>
+	</bean>
+	
+	<bean id = "address1" class = "com.kitri.ditest.AddressDto">
+		<constructor-arg value = "23456"/>
+		<constructor-arg value = "서울시 서초구 서운로 221 래미안서초스위트 아파트"/>
+		<constructor-arg value = "102동 602호"/>
+	</bean>
+	
+	<bean id="m6" class="com.kitri.ditest.MemberDto">
+		<property name="id" value="hong"/>
+		<property name="name" value="홍길동"/>
+		<property name="addressDto" ref="address2"/>
+		<property name="money" value="10000000"/>
+		<property name="age" value="25"/>
+	</bean>
+	
+	<bean id="address2" class="com.kitri.ditest.AddressDto">
+		<property name="zipcode" value="12345"/>
+		<property name="address" value="서울시 관악구 신림동"/>
+		<property name="addressDetail" value="순대타운"/>
+	</bean>
+	
+	<bean id="m7" class="com.kitri.ditest.MemberDto"
+		p:id="java"
+		p:name="이순신"
+		p:age="33"
+		p:money="25360000"
+		p:addressDto-ref="address3"
+	/>
+	
+	<bean id="address3" class="com.kitri.ditest.AddressDto"
+		p:zipcode="12345"
+		p:address="전라남도 여수시 여수공원"
+		p:addressDetail="3층"
+	/>
+
+</beans>

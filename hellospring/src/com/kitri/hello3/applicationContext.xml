@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<!-- <bean id="hs" class="com.kitri.hello3.HelloServiceKor"/> -->
+	
+	<!-- 
+		prototype을 설정하지 않으면 singleton 객체로 만들어짐  
+		getBean하는 순간 만들어짐
+		id는 하나만 설정 가능하지만 name은 여러개 설정 가능
+		여기서 만든 HelloDao의 객체를 property에 있는 곳에 알아서 넣어준다.
+		
+		<bean id="hs" class="com.kitri.hello3.HelloServiceKor">
+			<property name = "helloDao" ref="hd"/>
+		</bean>
+	-->
+	
+	<bean id = "hd" class = "com.kitri.hello3.HelloDao"/>
+	<bean id="hs" class="com.kitri.hello3.HelloServiceKor">
+		<constructor-arg ref="hd"/>
+	</bean>
+	<bean id="hs1" class="com.kitri.hello3.HelloServiceEng" scope="prototype"/>
+
+</beans>
