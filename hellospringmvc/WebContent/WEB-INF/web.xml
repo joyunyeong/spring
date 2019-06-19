@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+<display-name>hellospringmvc</display-name>
+<!-- 
+	servlet-name을 뭐라고 하든지간에 WEB-INF에서 .xml파일을 찾는다
+	우리는 그 파일을 만들어줘야한다. : dispatcher-servlet.xml > servlet-context.xml로 후에 바뀜
+	param-value에서 설정파일의 이름을 바꿀 수 있다.
+	* 표시하면 아무거나 다 올 수 있다.
+	context-param : context가 메모리에 올라갈 때 사용 > listener 필요
+ -->
+ 
+ <context-param>
+ 	<param-name>contextConfigLocation</param-name>
+ 	<param-value>/WEB-INF/application-context.xml</param-value>
+ </context-param>
+ 
+ <listener>
+ 	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+ </listener>
+ 
+<servlet>
+	<servlet-name>dispatcher</servlet-name>
+	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	<init-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/servlet-context.xml</param-value>
+		<!-- param-value>classpath:com/kitri/hello/config/a.xml</param-value : src에서 인식하고 싶은 경우-->
+	</init-param>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>dispatcher</servlet-name>
+	<url-pattern>*.kitri</url-pattern>	
+</servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
