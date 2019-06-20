@@ -10,6 +10,7 @@ $(document).ready(function() {
 	$("#id").keyup(function() {
 		var id = $("#id").val(); // id에 해당하는 값을 얻어와라
 		if(id.length < 5 || id.length > 16) {
+			cnt = 1; // 썼다가 지웠을경우!!!
 			$("#idresult").css("color", "gray"); // 추가하려면 뒤에 .css해서 더 늘리면됨
 			$("#idresult").text("아이디는 5자이상 16자 이하입니다."); // 여기다가 쓰라
 		} else {
@@ -39,6 +40,30 @@ $(document).ready(function() {
 	$('#zipcode').focusin(function() { // 우편번호 포커스인될 때 : CLICK 말고 TAB키 누를때도 해당
 		$('#zipModal').modal();
 	});
+	
+	$('#registerBtn').focusin(function() {
+		if($("#id").val().trim().length == 0) {
+			alert('아이디를 입력하세요!');
+			return;
+		} else if($("#name").val().trim().length == 0) {
+			alert('이름을 입력하세요!');
+			return;
+		} else if($("#pass").val().trim().length == 0) {
+			alert('비밀번호를 입력하세요!');
+			return;
+		} else if($("#pass").val() != $("#passcheck").val()) {
+			alert('비밀번호를 확인하세요!');
+			return;
+		} else if(cnt != 0) {
+			alert('아이디 중복 확인!');
+			return;
+		} else {
+			alert('뿌잉큐 > 완료!');
+			$("#memberform").attr("action", "${root}/user/register.kitri").submit();
+		}
+	});
+	
+	
 
 });
 
@@ -48,7 +73,7 @@ $(document).ready(function() {
 	<div class="col-lg-6" align="center">
 		<h2>회원가입</h2>
 		<form id="memberform" method="post" action="">
-			<input type="hidden" name="act" value="register">
+			<!--input type="hidden" name="act" value="register"-->
 			<div class="form-group" align="left">
 				<label for="name">이름</label>
 				<input type="text" class="form-control" id="name" name="name" placeholder="이름입력">
@@ -102,10 +127,10 @@ $(document).ready(function() {
 					<!--<button type="button" class="btn btn-primary" onclick="javascript:">우편번호</button>-->
 				</div>
 				<input type="text" class="form-control" id="address" name="address" placeholder="" readonly="readonly">
-				<input type="text" class="form-control" id="address_detail" name="address_detail" placeholder="">
+				<input type="text" class="form-control" id="address_detail" name="addressDetail" placeholder="">
 			</div>
 			<div class="form-group" align="center">
-				<button type="button" class="btn btn-primary" id="registerBtn" onclick="javascript:register();">회원가입</button>
+				<button type="button" class="btn btn-primary" id="registerBtn">회원가입</button>
 				<button type="reset" class="btn btn-warning">초기화</button>
 			</div>
 		</form>

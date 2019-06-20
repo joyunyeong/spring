@@ -5,11 +5,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kitri.member.model.MemberDetailDto;
 import com.kitri.member.model.service.MemberService;
 
 
@@ -29,7 +31,15 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/register.kitri", method = RequestMethod.POST) // value가 같다면 설정쓰 : post 방식으로 넘어온다면..
-	public String register(String name) { // String으로 하면view의 이름만 설정할 수 있다. 
+	public String register(MemberDetailDto memberDetailDto, Model model) {
+		// String으로 하면view의 이름만 설정할 수 있다. 
+		// memberdetaildto로 하면 지가 알아서 다 보내줌 getter/setter든~~
+		
+		int cnt = memberService.registerMember(memberDetailDto);
+		if(cnt != 0) { //성공 > ok로 ㄱㄱ(memberDetailDto 가지고)
+			model.addAttribute("userInfo", memberDetailDto);
+			return "user/member/registerok"; // view..where is model? 위에 model도 선언하고 그 안에 userinfo를 넣었음
+		}
 		return "user/member/member";
 	}
 	
