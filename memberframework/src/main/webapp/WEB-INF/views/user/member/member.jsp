@@ -5,8 +5,8 @@
 <script type="text/javascript">
 
 var cnt = 1; // why 1? 0이면 사용가능이니까
+		
 $(document).ready(function() {
-	
 	$("#id").keyup(function() {
 		var id = $("#id").val(); // id에 해당하는 값을 얻어와라
 		if(id.length < 5 || id.length > 16) {
@@ -94,7 +94,7 @@ $(document).ready(function() {
 			<div class="form-group" align="left">
 				<label for="email">이메일</label><br>
 				<div id="email" class="custom-control-inline">
-				<input type="text" class="form-control" id="emailid" name="emailid" placeholder="" size="25"> @
+				<input type="text" class="form-control" id="emailid" name="emailid" placeholder="" size="25">
 				<select class="form-control" id="emaildomain" name="emaildomain">
 					<option value="naver.com">naver.com</option>
 					<option value="google.com">google.com</option>
@@ -116,7 +116,7 @@ $(document).ready(function() {
 					<option value="051">051</option>
 					<option value="061">061</option>
 				</select> _
-				<input type="text" class="form-control" id="tel2" name="tel2" placeholder="1234"> _
+				<input type="text" class="form-control" id="tel2" name="tel2" placeholder="1234"> 
 				<input type="text" class="form-control" id="tel3" name="tel3" placeholder="5678">
 				</div>
 			</div>

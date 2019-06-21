@@ -18,10 +18,10 @@ $(document).ready(function() {
 function memberList(key, word) {
 	$("#mlist").empty();
 	$.ajax({
-		url : "${root}/admin",	
+		url : "${root}/admin.memberlist.kitri",	
 		type : "get",			
-		dataType : "xml",
-		data : "act=getmemberlist&key=" + key + "&word=" + word,
+		dataType : "json",
+		data : {"key" : key, "word" : word},
 		timeout : 30000,
 		cache : false,
 		success : function(xml){
