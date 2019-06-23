@@ -5,7 +5,7 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-		
+	
 });
 
 function deleteMember() {
@@ -19,9 +19,11 @@ function deleteMember() {
 <a href="${root}/user/logout.kitri">로그아웃</a>
 <a href="${root}/user/modify.kitri">정보수정</a>
 <a href="#" onclick="javascript:deleteMember();">회원탈퇴</a>
-	<c:if test="${'java2' == userInfo.id}">
-<a href="${root}/admin/mvmemberlist.kitri">관리자</a>
-	</c:if>
+
+<c:if test="${'java2' == userInfo.id}">
+	<a href="${root}/admin/mvmemberlist.kitri">관리자</a>
+</c:if>
+
 </c:if>
 <c:if test="${userInfo == null}">
 	<c:redirect url="/user/login.kitri"/>

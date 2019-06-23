@@ -58,7 +58,6 @@ $(document).ready(function() {
 			alert('아이디 중복 확인!');
 			return;
 		} else {
-			alert('뿌잉큐 > 완료!');
 			$("#memberform").attr("action", "${root}/user/register.kitri").submit();
 		}
 	});

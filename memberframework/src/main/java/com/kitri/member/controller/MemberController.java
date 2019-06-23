@@ -30,9 +30,12 @@ public class MemberController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
-	@Autowired // memberservice type이 있으면 알아서 주입을 해준다!! > getter/setter 쓸 필요 없이
 //	@Qualifier("Impl1") : Implements 여러개하는 경우가 있으면 qualifier 써야함
+	@Autowired // memberservice type이 있으면 알아서 주입을 해준다!! > getter/setter 쓸 필요 없이
 	private MemberService memberService;
+	
+	
+///////////////////////////////////////////////// Method 시작 //////////////////////////////////////////////////////	
 	
 	@RequestMapping(value = "/register.kitri", method = RequestMethod.GET)
 	public String register() { // String으로 하면view의 이름만 설정할 수 있다. 
@@ -115,9 +118,39 @@ public class MemberController {
 	
 	@RequestMapping("/logout.kitri")
 	public String logout(@ModelAttribute("userInfo") MemberDto memberDto, SessionStatus sessionStatus) { // userInfo안에 있는걸 여기다 넣어
-			sessionStatus.setComplete();
-			return "redirect:/index.jsp";
+		System.out.println("로그아웃 > " + memberDto);
+		sessionStatus.setComplete();
+		return "redirect:/index.jsp";
 	}
+	
+	@RequestMapping("/modify.kitri")
+	public String modify(@ModelAttribute("userInfo") MemberDto memberDto, SessionStatus sessionStatus) {
+		System.out.println("회원정보 수정 > ");
+		return "user/member/modify";
+	}
+	
+	@RequestMapping(value = "/modifyInfo.kitri", method = RequestMethod.POST) // value가 같다면 설정쓰 : post 방식으로 넘어온다면..
+	public String modifyInfo(MemberDetailDto memberDetailDto, Model model) {
+		System.out.println("회원정보 수정 2탄 > ");
+		int cnt = memberService.modifyMember(memberDetailDto);
+		if(cnt != 0) {
+			model.addAttribute("registerInfo", memberDetailDto);
+			System.out.println("성공했어염");
+			return "user/login/loginok";
+		}
+		System.out.println("실패했어염");
+		return "user/login/loginok";
+	}
+	
+	@RequestMapping("/delete.kitri")
+	public String delete(@ModelAttribute("userInfo") MemberDto memberDto, SessionStatus sessionStatus) {
+		System.out.println("회원탈퇴로 들어왔슈 > " + memberDto.getId());
+		memberService.deleteMember(memberDto.getId());
+		
+		return "user/login/login";
+	}
+	
+
 }
 
 

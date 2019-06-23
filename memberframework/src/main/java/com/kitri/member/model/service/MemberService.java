@@ -8,10 +8,11 @@ public interface MemberService {
 
 	String idCheck(String id);
 	String zipSearch(String doro);
-	int registerMember(MemberDetailDto memberDetailDto);
-	MemberDto loginMember(Map<String, String> map);
 	
+	MemberDto loginMember(Map<String, String> map);
 	MemberDetailDto getMember(String id);
+	
+	int registerMember(MemberDetailDto memberDetailDto);
 	int modifyMember(MemberDetailDto memberDetailDto);
 	int deleteMember(String id);
 	

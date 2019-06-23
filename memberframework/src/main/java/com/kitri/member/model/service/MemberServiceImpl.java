@@ -72,6 +72,12 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	public int modifyMember(MemberDetailDto memberDetailDto) {
+		System.out.println("> modify하러 들어옴");
+		return memberDao.modifyMember(memberDetailDto);
+	}
+	
+	@Override
 	public MemberDto loginMember(Map<String, String> map) {
 //		Map<String, String> map = new HashMap<String, String>(); // id, pass map으로 받기
 //		map.put("userid", id);
@@ -84,10 +90,6 @@ public class MemberServiceImpl implements MemberService {
 		return null;
 	}
 
-	@Override
-	public int modifyMember(MemberDetailDto memberDetailDto) {
-		return 0;
-	}
 
 	@Override
 	public int deleteMember(String id) {
