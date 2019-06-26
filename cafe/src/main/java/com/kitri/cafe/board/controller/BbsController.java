@@ -9,10 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kitri.cafe.board.service.BbsService;
+import com.kitri.cafe.common.service.CommonService;
 
 @Controller
 @RequestMapping("/bbs")
 public class BbsController {
+
+	@Autowired
+	private CommonService commonservice;
 	
 	@Autowired
 	private BbsService bbsService;

@@ -1,20 +1,28 @@
-
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var = "root" value="${pageContext.request.contextPath }"/>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="ko">
-<head>
-<title>글입력 성공</title>
+<%@ include file="/WEB-INF/views/commons/template/top.jsp" %>
+<%@ include file="/WEB-INF/views/commons/board_common.jsp" %>
+>>>>>>>>>>>>>>>>>>>>>>>>>>>${seq}
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="${root}/css/skin_purple.css" type="text/css">
-</head>
-
-<body>
+<script>
+$(document).ready(function(){
+	$("#viewBtn").click(function(){
+		// 글번호 보내기
+		// encoding해서 쿼리문 보내기 > 알아서 해주는것 : form!!
+		
+		$("#bcode").val("${bcode}");
+		$("#pg").val("${pg}");
+		$("#key").val("${key}");
+		$("#word").val("${word}");
+		$("#seq").val("${seq}");
+		$("#commonForm").attr("method","GET").attr("action","${root}/reboard/view").submit();
+	});
+	
+	$("#listBtn").click(function(){
+		
+	});
+});
+</script>
 
 <table width="100%" cellpadding="6" cellspacing="2" border="0"
 	bgcolor="#ffffff" style="border: #e1e1e1 solid 1px">
@@ -33,15 +41,15 @@
 			align="center"><b>게시물이 등록되었습니다.</b><br>
 		<br>
 
-		<div align="center"><a href=""><img
-			src="${root}/img/board/b_wirtecf.gif" width="91" height="21"
+		<div align="center">
+		<img src="${root}/img/board/b_wirtecf.gif" id="viewBtn" height="21"
 			border="0" align="absmiddle" alt="작성한 글 확인" hspace="10"></a><a
-			href=""><img src="${root}/img/board/poll_listbu1.gif"
+			href="">
+		<img src="${root}/img/board/poll_listbu1.gif" id="listBtn"
 			width="62" height="21" border="0" align="absmiddle" alt="목록보기"
 			hspace="10"></a>
 		</td>
 	</tr>
 </table>
 <br>
-</body>
-</html>
+<%@ include file="/WEB-INF/views/commons/template/bottom.jsp" %>

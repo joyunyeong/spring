@@ -1,15 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/commons/template/top.jsp" %>
+<%@ include file="/WEB-INF/views/commons/logincheck.jsp" %>
+<%@ include file="/WEB-INF/views/commons/board_common.jsp" %>
 
 <script>
 $(document).ready(function() {
 	
 	$("#writeBtn").click(function() {
-		if($("#subject").val() != "") {
+		if($("#subject").val() == "") {
 			alert("제목 입력!!!");
 			return;
-		} else if($("#content").val() != "") {
+		} else if($("#content").val() == "") {
 			alert("내용 입력!!!");
 			return;
 		} else {
@@ -56,9 +58,7 @@ $(document).ready(function() {
 <input type="hidden" name="key" value="">
 <input type="hidden" name="word" value="">
 
-<table border="0" cellpadding="5" cellspacing="0" width="630"
-	style="table-layout: fixed">
-
+<table border="0" cellpadding="5" cellspacing="0" width="630" style="table-layout: fixed">
 	<tr valign="top">
 		<td width="95" nowrap style="padding-left: 8px; padding-top: 10px"><img
 			src="${root}/img/board/e_dot.gif" width="4" height="4" border="0"
@@ -70,6 +70,7 @@ $(document).ready(function() {
 			style="margin: 3 3 0 6"><font class="stext">최대 한글 75자,
 		영문 150자</font><br>
 	</tr>
+	
 	<tr>
 		<td width="620" nowrap style="padding-left: 8px; padding-top: 10px"
 			colspan="5"><img src="${root}/img/board/e_dot.gif" width="4"
