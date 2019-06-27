@@ -1,8 +1,9 @@
-package com.kitri.cafe.board.controller;
+	package com.kitri.cafe.board.controller;
 
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import com.kitri.cafe.board.model.ReboardDto;
 import com.kitri.cafe.board.service.ReboardService;
 import com.kitri.cafe.common.service.CommonService;
 import com.kitri.cafe.member.model.MemberDto;
+import com.kitri.cafe.util.PageNavigation;
 
 @Controller
 @RequestMapping("/reboard")
@@ -74,6 +76,7 @@ public class ReboardController {
 		MemberDto memberDto = (MemberDto) session.getAttribute("userInfo");
 		if(memberDto != null) { // null이 아닐때만 글이 보여야함
 			ReboardDto reboardDto = reboardService.viewArticle(seq);
+			
 			model.addAttribute("article", reboardDto);
 			model.addAttribute("parameter", parameter);
 			path = "reboard/view";
@@ -85,11 +88,15 @@ public class ReboardController {
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET) // 글쓸걸대비
-	public void list(@RequestParam Map<String, String> parameter, Model model) {
+	public void list(@RequestParam Map<String, String> parameter, Model model, HttpServletRequest request) {
 		
 		List<ReboardDto> list = reboardService.listArticle(parameter);
+		PageNavigation pageNavigation = commonService.getPageNavigation(parameter); // service는 어디로 가야할까? reboard X common으로!!
+		pageNavigation.setRoot(request.getContextPath());
+		pageNavigation.makeNavigator();
 		
 		model.addAttribute("parameter", parameter);
 		model.addAttribute("articleList", list);
+		model.addAttribute("navigator", pageNavigation);
 	}
 }

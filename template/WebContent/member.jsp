@@ -26,10 +26,11 @@
 #searchText {
 	width: 100%;
 }
+
 </style>
 
 <script type="text/javascript">
-	$("#memberlist").click(function() {
+	$("#memberlist").click(function() {	
 		alert('멘토허용?');
 	});
 </script>

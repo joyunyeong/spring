@@ -2,28 +2,28 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/commons/template/top.jsp" %>
 <%@ include file="/WEB-INF/views/commons/board_common.jsp" %>
->>>>>>>>>>>>>>>>>>>>>>>>>>>${seq}
-
 <script>
-$(document).ready(function(){
-	$("#viewBtn").click(function(){
-		// 글번호 보내기
-		// encoding해서 쿼리문 보내기 > 알아서 해주는것 : form!!
-		
+$(document).ready(function() {
+	
+	$("#viewBtn").click(function() {
 		$("#bcode").val("${bcode}");
 		$("#pg").val("${pg}");
 		$("#key").val("${key}");
 		$("#word").val("${word}");
 		$("#seq").val("${seq}");
-		$("#commonForm").attr("method","GET").attr("action","${root}/reboard/view").submit();
+		$("#commonForm").attr("method", "GET").attr("action", "${root}/reboard/view").submit();
 	});
 	
-	$("#listBtn").click(function(){
-		
+	$("#listBtn").click(function() {
+		$("#bcode").val("${bcode}");
+		$("#pg").val("1");
+		$("#key").val("");
+		$("#word").val("");
+		$("#commonForm").attr("method", "GET").attr("action", "${root}/reboard/list").submit();
 	});
+	
 });
 </script>
-
 <table width="100%" cellpadding="6" cellspacing="2" border="0"
 	bgcolor="#ffffff" style="border: #e1e1e1 solid 1px">
 	<tr>
@@ -42,12 +42,10 @@ $(document).ready(function(){
 		<br>
 
 		<div align="center">
-		<img src="${root}/img/board/b_wirtecf.gif" id="viewBtn" height="21"
-			border="0" align="absmiddle" alt="작성한 글 확인" hspace="10"></a><a
-			href="">
-		<img src="${root}/img/board/poll_listbu1.gif" id="listBtn"
-			width="62" height="21" border="0" align="absmiddle" alt="목록보기"
-			hspace="10"></a>
+			<img src="${root}/img/board/b_wirtecf.gif" id="viewBtn" width="91" height="21"
+			border="0" align="absmiddle" alt="작성한 글 확인" hspace="10">
+			<img src="${root}/img/board/poll_listbu1.gif" id="listBtn"
+			width="62" height="21" border="0" align="absmiddle" alt="목록보기" hspace="10">
 		</td>
 	</tr>
 </table>
