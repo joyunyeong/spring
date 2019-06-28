@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/template/header.jsp"%>
-<%@ include file="membermodal.jsp"%>
 
 <style>
 #memberlist {
@@ -30,9 +29,11 @@
 </style>
 
 <script type="text/javascript">
+$(document).ready(function(){
 	$("#memberlist").click(function() {	
 		alert('멘토허용?');
 	});
+});
 </script>
 
 <!-- 여기 내 내용 width; 872.443 height; 110.653-->

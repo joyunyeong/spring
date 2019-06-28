@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Majestic Admin</title>
+  
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="vendors/base/vendor.bundle.base.css">
   <link rel="stylesheet" href="css/style.css">
@@ -17,7 +18,7 @@
   <script src="js/template.js"></script>
   <script src="js/chart.js"></script>
 
-
+<section>
         <div class="content-wrapper" style="margin-top: 30px;">
           <div class="row">
             <div class="col-lg-6 grid-margin stretch-card">
@@ -74,5 +75,6 @@
             </div>
           </div>
         </div>
+</section>
 <%@ include file="/template/sidebar.jsp"%>
 <%@ include file="/template/footer.jsp"%>

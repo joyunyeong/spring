@@ -36,19 +36,30 @@
 // 참고 : http://demo.webslesson.info/bootstrap-crud-php/ 
 
 $(document).ready(function(){
-	
 	$("tbody").click(function() {
-		alert("학교정보 Click");
-		$("#myModal").modal();
+		//alert("학교정보 Click");
+		//$.noConflict(); // 에러 없애기....없어지니..?
+		window.open("/template/schoolmodify.jsp", "_blank", "width=600, height=700, left=500, top=20");
+		return false;
+	});
+	
+	$("#deleteBtn").click(function() {
+		alert("삭제고고");
 	});
 });
+
 </script>
 
 
 <!-- 여기 내 내용 width; 872.443 height; 110.653-->
 <section style="padding-top: 20px; padding-bottom: 0px;">
-	<form>
-		<input type="text" name="search" placeholder="학교이름을 입력해주세요" id="searchText">
+	<form class="form-inline" action="">
+		<div style="display: inline-block;">
+			<input type="text" name="search" placeholder="학교이름을 입력해주세요" id="searchText" style="height: 43.99306px; width: 863.99306px;">
+		</div>
+		<div style="display: inline-block;">
+		<button type="button" id="searchBtn" class="btn btn-primary" sty>검색</button>
+		</div>
 	</form>
 </section>
 
@@ -57,6 +68,7 @@ $(document).ready(function(){
 		<table class="table" id="memberlistTop">
 			<thead>
 				<tr>
+					<td>구분</td>
 					<th>학교유형</th>
 					<th>학교유형2</th>
 					<th>학교명</th>
@@ -69,20 +81,22 @@ $(document).ready(function(){
 			<!-- 잠시 임시! -->
 			<tbody id="memberlist">
 				<tr>
+					<td>1</td>
 					<td>대학교</td>
 					<td>일반대학</td>
 					<td>University of Harvard</td>
 					<td>Holyoke Center, 1350 Massachusetts Avenue, Boston</td>
 					<td>35</td>
-					<td></td>
+					<td><button type="button" class="btn btn-primary" id="deleteBtn">삭제</button></td>
 				</tr>
 				<tr>
+					<td>2</td>
 					<td>고등학교</td>
 					<td>과학고</td>
 					<td>서울과학고등학교</td>
 					<td>서울특별시 종로구 명륜1가 혜화로 63</td>
 					<td>1</td>
-					<td></td>
+					<td><button type="button" class="btn btn-primary" id="deleteBtn">삭제</button></td>
 				</tr>
 			</tbody>
 
@@ -90,8 +104,8 @@ $(document).ready(function(){
 	</div>
 </section>
 
-<!-- The Modal -->
-  <div class="modal" id="myModal">
+  <!-- The Modal -->
+<div class="modal" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
       
@@ -113,6 +127,6 @@ $(document).ready(function(){
         
       </div>
     </div>
-  </div>
+</div>
 <%@ include file="/template/sidebar.jsp"%>
 <%@ include file="/template/footer.jsp"%>
