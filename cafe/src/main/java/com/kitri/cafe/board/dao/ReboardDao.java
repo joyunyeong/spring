@@ -11,4 +11,8 @@ public interface ReboardDao {
 	ReboardDto viewArticle(int seq);
 	int modifyArticle(ReboardDto reboardDto);
 	void deleteArticle(int seq);
+	
+	void updateStep(ReboardDto reboardDto); // 두개보내니까 dto보내도 상관 X
+	int replyArticle(ReboardDto reboardDto); 
+	void updateReply(int pseq);
 }

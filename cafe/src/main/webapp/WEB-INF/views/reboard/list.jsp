@@ -137,7 +137,10 @@ $(document).ready(function(){
 		<!--td>
      
      </td-->
-		<td style="word-break: break-all;"><label class="viewBtn" data-seq="${article.seq }">${article.subject }</label></td>
+		<td style="word-break: break-all;">
+			<img alt="" src="${root}/img/board/blank.gif" width="${article.lev*15 }" height="1">
+			<label class="viewBtn" data-seq="${article.seq }">${article.subject }</label>
+		</td>
 		<td></td>
 		<td style="word-break: break-all;"><a href="javascript:;" onClick="showSideView();" class="link_board_04">${article.name }</a></td>
 		<td></td>

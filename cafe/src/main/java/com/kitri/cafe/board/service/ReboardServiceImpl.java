@@ -46,6 +46,12 @@ public class ReboardServiceImpl implements ReboardService {
 		reboardDto.setContent(reboardDto.getContent().replace("\n", "<br>")); // enter 처리하기
 		return sqlSession.getMapper(ReboardDao.class).viewArticle(seq);
 	}
+	
+	@Override
+	@Transactional
+	public ReboardDto getArticle(int seq) {
+		return sqlSession.getMapper(ReboardDao.class).viewArticle(seq);
+	}
 
 	@Override
 	public int modifyArticle(ReboardDto reboardDto) {
@@ -55,6 +61,21 @@ public class ReboardServiceImpl implements ReboardService {
 	@Override
 	public void deleteArticle(int seq) {
 
+	}
+
+	@Override
+	@Transactional
+	public int replyArticle(ReboardDto reboardDto) {
+		// ★★★★ update 순서!!!
+		ReboardDao reboardDao = sqlSession.getMapper(ReboardDao.class);
+		
+		// 순서주의
+		reboardDao.updateStep(reboardDto);
+		reboardDao.replyArticle(reboardDto);
+		reboardDao.updateReply(reboardDto.getPseq());
+		
+		// return 글 번호 받기!!
+		return reboardDto.getSeq();
 	}
 
 }

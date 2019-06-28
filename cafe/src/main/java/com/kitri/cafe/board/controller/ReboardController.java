@@ -99,4 +99,53 @@ public class ReboardController {
 		model.addAttribute("articleList", list);
 		model.addAttribute("navigator", pageNavigation);
 	}
+	
+	@RequestMapping(value = "/reply", method = RequestMethod.GET) 
+	public String reply(@RequestParam("seq") int seq, @RequestParam Map<String, String> parameter, Model model, HttpSession session) {
+		String path = "";
+				
+		MemberDto memberDto = (MemberDto) session.getAttribute("userInfo");
+		if(memberDto != null) { // null이 아닐때만 글이 보여야함
+			ReboardDto reboardDto = reboardService.getArticle(seq);
+					
+			model.addAttribute("article", reboardDto);
+			model.addAttribute("parameter", parameter);
+			path = "reboard/reply";
+		} else { // 로그인으로 가라
+			path = "redirect:/index.jsp";
+		}
+		return path;
+	}
+	
+	@RequestMapping(value = "/reply", method = RequestMethod.POST)
+	public String reply(ReboardDto reboardDto, @RequestParam Map<String, String> parameter, Model model, HttpSession session) { // 이 내용을 DB에다 집어넣어야함
+		String path = "";
+		MemberDto memberDto = (MemberDto) session.getAttribute("userInfo");
+		
+		if(memberDto != null) {
+			int seq = commonService.getNextSeq(); // 글번호를 무조건 얻어오는가? : NOPE > 로그인 안한사람은 필요없어!!!
+
+			reboardDto.setSeq(seq);
+			reboardDto.setId(memberDto.getId());
+			reboardDto.setName(memberDto.getName());
+			reboardDto.setEmail(memberDto.getEmail());
+			// reboardDto.setRef(seq); 여기서는 원글 ref가 있으니까 setRef하면 X
+			
+			seq = reboardService.replyArticle(reboardDto);
+			
+			if(seq != 0) {
+				model.addAttribute("seq", seq);
+				path = "reboard/writeok";
+				System.out.println("글번호 : " + seq);
+			} else {
+				path = "reboard/writefail";
+				System.out.println("글번호 : " + seq);
+			}
+		
+		} else {
+			path = "";
+		}
+		model.addAttribute("parameter", parameter); // parameter에 bcode 이런거 들어있긔
+		return path;
+	}
 }
