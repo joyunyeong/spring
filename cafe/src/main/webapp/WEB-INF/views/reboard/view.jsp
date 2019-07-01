@@ -40,7 +40,105 @@ $(document).ready(function(){
 		$("#word").val("${word}");
 		$("#commonForm").attr("method","GET").attr("action","${root}/reboard/list").submit();
 	});
+	
+	getMemoList();
+	
+	$("#memoBtn").click(function(){
+		if('${userInfo == null}' == 'true') {
+			alert('로그인');
+		} else {
+			var seq = '${article.seq}';
+			var mcontent = $('#mcontent').val(); //댓글내용 받기
+			var param = JSON.stringify({'seq' : seq, 'mcontent' : mcontent});
+			if(mcontent.trim().length != 0) {
+				$.ajax({
+					url : '${root}/memo',
+		            type : 'POST',
+		            contentType : 'application/json; charset=UTF-8',
+		            dataType : 'json',
+		            data : param,
+		            success : function(response) {
+		                 makeMemoList(response);
+		                 $("#mcontent").val('');
+		            }
+				}); // ajax 끝
+			}
+		}
+	}); // memoBtn click event 끝
+	
+	$(document).on("click", ".mdeleteBtn", function(){
+		alert('삭제하시겠습니까?');
+		$.ajax({
+			url : '${root}/memo/' + $(this).parent("td").attr("data-seq") + '/'+ $(this).parent("td").attr("data-mseq"), // 이번엔 data를 여기다 붙임
+            type : 'DELETE', //list를 가져오는건 get방식
+            contentType : 'application/json; charset=UTF-8',
+            dataType : 'json',
+            success : function(response) {
+                 makeMemoList(response);
+                 $("#mcontent").val('');
+            }
+		});
+		
+	});
+	
+	function getMemoList() {
+		$.ajax({
+			url : '${root}/memo',
+            type : 'GET', //list를 가져오는건 get방식
+            contentType : 'application/json; charset=UTF-8',
+            dataType : 'json',
+            data : {seq: '${article.seq}'},
+            success : function(response) {
+                 makeMemoList(response);
+                 $("#mcontent").val('');
+            }
+		});
+	}
+	
+	function makeMemoList(memos) {
+		var memocnt = memos.memolist.length;
+		var memostr = '';
+		
+		for(var i=0; i< memocnt; i++) {
+			var memo = memos.memolist[i];
+			memostr += '<tr>';
+			memostr += '<td>' + memo.name +'</td>';
+			memostr += '<td style="padding: 10px">';
+			memostr += memo.mcontent;
+			memostr += '</td>';
+			memostr += '<td width="100" style="padding: 10px">';
+			memostr += memo.mtime;
+			memostr += '</td>';
+			
+			if('${userInfo.id}' == memo.id) { // 댓글이 내 글이라면
+			memostr += '<td width="100" style="padding: 10px" data-seq="' + memo.seq +'" data-mseq="' +memo.mseq +'">';
+			memostr += '	<input type="button" value="수정" class ="mmodifyBtn">';
+			memostr += '	<input type="button" value="삭제" class ="mdeleteBtn">';
+			memostr += '</td>';
+				
+			}
+			
+			memostr += '<tr style="display: none;">';
+			memostr += '	<td colspan="3" style="padding: 10px">';
+			memostr += '	<textarea class="mcontent" cols="160" rows="5">'+ memo.mcontent+'</textarea>';
+			memostr += '	</td>';
+			memostr += '	<td width="100" style="padding: 10px">';
+			memostr += '	<input type="button" class="memoModifyBtn" value="글 수정">';
+			memostr += '	<input type="button" class="memoModifyCancelBtn" value="글 취소">';
+			memostr += '	</td>';
+			memostr += '</tr>';
+			
+			memostr += '</tr>';
+			memostr += '<tr>';
+			memostr += '<td class="bg_board_title_02" colspan="4" height="1"';
+			memostr += 'style="overflow: hidden; padding: 0px"></td>';
+			memostr += '</tr>';
+		}
+		$("#mlist").empty();
+		$("#mlist").append(memostr);
+	}
 });
+
 </script>
 
 
@@ -165,6 +263,40 @@ $(document).ready(function(){
 			<a href="javascript:goBbsRead();">아랫글<img src="${root}/img/board/icon_down.gif" border="0" align="absmiddle" hspace="3"></a>
 		</td>
 	</tr>
+</table>
+
+<!-- 댓글 -->
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+	<tr>
+		<td colspan="2" height="5" style="padding: 0px"></td>
+	</tr>
+	<tr>
+		<td class="bg_board_title_02" colspan="2" height="1"
+			style="overflow: hidden; padding: 0px"></td>
+	</tr>
+	<tr>
+		<td style="padding: 10px">
+		<textarea id="mcontent" cols="160" rows="5"></textarea>
+		</td>
+		<td width="100" style="padding: 10px">
+		<input type="button" id="memoBtn" value="글작성">
+		</td>
+	</tr>
+	<tr>
+		<td class="bg_board_title_02" colspan="2" height="1"
+			style="overflow: hidden; padding: 0px"></td>
+	</tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+	<tr>
+		<td colspan="4" height="5" style="padding: 0px"></td>
+	</tr>
+	<tr>
+		<td class="bg_board_title_02" colspan="4" height="1"
+			style="overflow: hidden; padding: 0px"></td>
+	</tr>
+	<tbody id="mlist"></tbody>
 </table>
 <br>
 <%@ include file="/WEB-INF/views/commons/template/bottom.jsp" %>

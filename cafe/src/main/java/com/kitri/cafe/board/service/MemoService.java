@@ -8,9 +8,8 @@ import com.kitri.cafe.board.model.MemoDto;
 public interface MemoService {
 	// view 메모는 필요없음 : memo니까!
 	
-	int writeMemo(MemoDto memoDto);
-	List<MemoDto> listMemo(Map<String, String> parameter);
-	
+	void writeMemo(MemoDto memoDto);
+	String listMemo(int seq); // 글 번호만 있으면됨
 	void modifyMemo(MemoDto memoDto);
-	void deleteMemo(int mseq);
+	String deleteMemo(int seq, int mseq);
 }

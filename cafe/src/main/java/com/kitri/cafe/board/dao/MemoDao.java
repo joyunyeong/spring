@@ -7,8 +7,8 @@ import com.kitri.cafe.board.model.MemoDto;
 
 public interface MemoDao {
 	int writeMemo(MemoDto memoDto);
-	List<MemoDto> listMemo(Map<String, String> parameter);
-	
+	List<MemoDto> listMemo(int seq);
+	MemoDto viewMemo(int seq);
 	void modifyMemo(MemoDto memoDto);
 	void deleteMemo(int mseq);
 }
