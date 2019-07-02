@@ -2,12 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/commons/template/top.jsp" %>
 <%@ include file="/WEB-INF/views/commons/board_common.jsp" %>
-<c:if test="${errorMsg != null }">
-<script>
-alert("{errorMsg}");
-document.location.href = "${root}/index.jsp"
-</script>
-</c:if>
 <script>
 $(document).ready(function() {
 	

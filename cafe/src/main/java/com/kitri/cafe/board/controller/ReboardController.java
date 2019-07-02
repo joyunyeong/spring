@@ -50,7 +50,6 @@ public class ReboardController {
 			
 			seq = reboardService.writeArticle(reboardDto); // 정상적으로 insert되면 글번호 받아올꺼야
 			
-			
 			if(seq != 0) {
 				model.addAttribute("seq", seq);
 				path = "reboard/writeok";
