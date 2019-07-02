@@ -1,47 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!-- 바로 위에는 section 끝 -->	
+	</div>
 </div>
-</div>
+
 <!-- Sidebar -->
 <div id="sidebar">
 	<div class="inner">
-
-		<!-- Search -->
 		<section id="search" class="alt">
 			<form method="post" action="#">
 				<input type="text" name="query" id="query" placeholder="Search" />
 			</form>
 		</section>
 		
-		<!-- 로그인		
-		<section>
-		</section>
-		 -->
-		 
-		<!-- Menu -->
 		<nav id="menu">
-			<header class="major">
-				<h2>Menu</h2>
-			</header>
+			<header class="major"><h2>Menu</h2></header>
 			<ul>
 				<li><a href="member.jsp">show member</a></li>
 				<li><a href="school.jsp">show school</a></li>
 				<li><a href="recruit.jsp">recruit Info</a></li>
 				<li><a href="chart.jsp">statistics</a></li>
-				<li><span class="opener">Submenu</span>
+				<li>
+					<span class="opener">Submenu</span>
 					<ul>
 						<li><a href="#">Lorem Dolor</a></li>
 						<li><a href="#">Ipsum Adipiscing</a></li>
 						<li><a href="#">Tempus Magna</a></li>
 						<li><a href="#">Feugiat Veroeros</a></li>
-					</ul></li>
-				<li><span class="opener">Another Submenu</span>
+					</ul>
+				</li>
+				<li>
+					<span class="opener">Another Submenu</span>
 					<ul>
 						<li><a href="#">Lorem Dolor</a></li>
 						<li><a href="#">Ipsum Adipiscing</a></li>
 						<li><a href="#">Tempus Magna</a></li>
 						<li><a href="#">Feugiat Veroeros</a></li>
-					</ul></li>
+					</ul>
+				</li>
 			</ul>
 		</nav>
 
