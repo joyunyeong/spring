@@ -87,4 +87,3 @@ $(document).ready(function(){
 	</div>
 </section>
 <%@ include file="/template/sidebar.jsp"%>
-<%@ include file="/template/footer.jsp"%>

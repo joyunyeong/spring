@@ -510,4 +510,3 @@ print 'It took ' + i + ' iterations to sort the deck.';
 </section>
 
 <%@ include file="/template/sidebar.jsp"%>
-<%@ include file="/template/footer.jsp"%>

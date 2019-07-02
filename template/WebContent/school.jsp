@@ -129,4 +129,3 @@ $(document).ready(function(){
     </div>
 </div>
 <%@ include file="/template/sidebar.jsp"%>
-<%@ include file="/template/footer.jsp"%>
