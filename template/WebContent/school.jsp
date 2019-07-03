@@ -46,27 +46,27 @@ $(document).ready(function(){
    </section>
 -->
 
-   <form class="form-inline" action="" style="padding-top: 50px; margin-bottom: 0px;">
-      <div class="col-9 col-12-small">
-               <div class="col-2 col-4-small" style="float: right;">
-                  <ul class="actions">
-                     <li><a href="#" class="button primary icon"><i class="fas fa-search"></i></a></li>
-                  </ul>
-               <div class="col-0 col-8-small" style="float: right;">
-               </div>
-               </div>
+<form class="form-inline" action="" style="padding-top: 50px; margin-bottom: 0px;">
+	<div class="col-9 col-12-small">
+		<div class="col-2 col-4-small" style="float: right;">
+			<ul class="actions">
+				<li><a href="#" class="button primary icon"><i class="fas fa-search"></i></a></li>
+            </ul>
+        	<div class="col-0 col-8-small" style="float: right;"></div>
+   		 </div>
                
-               <div class="col-3 col-5-small" style="margin: 0 1em 0 0.5em; float: right;">
-                  <input type="email" name="demo-email" id="demo-email" value="" placeholder="학교이름을 입력하세요" />
-               </div>
-               <div class="col-7 col-7-small" style="float: right;">
-                   <select name="school-cate2" id="school-cate2">
-                     <option value="0">ID</option>
-                     <option value="1">내용</option>
-                  </select>
-               </div>
-            </div>
-   </form>
+	    <div class="col-3 col-5-small" style="margin: 0 1em 0 0.5em; float: right;">
+	    	<input type="email" name="demo-email" id="demo-email" value="" placeholder="학교명을 입력하세요" />
+	    </div>
+	    
+	    <div class="col-7 col-7-small" style="float: right;">
+			<select name="school-cate2" id="school-cate2">
+				<option value="0">ID</option>
+				<option value="1">내용</option>
+	        </select>
+	     </div>
+    </div>
+</form>
 
 <section style="padding-top: 0px;">
    <div class="table-responsive-lg">

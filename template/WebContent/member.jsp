@@ -1,89 +1,122 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ include file="/template/header.jsp"%>
 
 <style>
 #memberlist {
-	cursor: pointer;
+   cursor: pointer;
 }
 
 #searchText {
-	width: 130px;
-	box-sizing: border-box;
-	border: 2px solid #ccc;
-	border-radius: 4px;
-	font-size: 16px;
-	background-color: white;
-	background-image: url('');
-	background-position: 10px 10px;
-	background-repeat: no-repeat;
-	padding: 12px 20px 12px 40px;
-	-webkit-transition: width 0.4s ease-in-out;
-	transition: width 0.4s ease-in-out;
+   width: 130px;
+   box-sizing: border-box;
+   border: 2px solid #ccc;
+   border-radius: 4px;
+   font-size: 16px;
+   background-color: white;
+   background-image: url('');
+   background-position: 10px 10px;
+   background-repeat: no-repeat;
+   padding: 12px 20px 12px 40px;
+   -webkit-transition: width 0.4s ease-in-out;
+   transition: width 0.4s ease-in-out;
 }
 
 #searchText {
-	width: 100%;
+   width: 100%;
 }
 
 </style>
 
 <script type="text/javascript">
+//참고 : http://demo.webslesson.info/bootstrap-crud-php/ 
+
 $(document).ready(function(){
-	$("#memberlist").click(function() {	
-		alert('멘토허용?');
-	});
+   $("#memberlist").click(function() {
+      //alert("학교정보 Click");
+      //$.noConflict(); // 에러 없애기....없어지니..?
+      window.open("/template/schoolmodify.jsp", "_blank", "width=600, height=700, left=500, top=20");
+      return false;
+   });
+   
+   $("#allowBtn").click(function() {
+      alert("멘토로 승인하시겠습니까?");
+      //window.close("/template/schoolmodify.jsp", "_blank", "width=600, height=700, left=500, top=20");
+   });
 });
+
 </script>
-
+<form class="form-inline" action="" style="padding-top: 50px; margin-bottom: 0px;">
+<div class="col-9 col-12-small">
+               <div class="col-2 col-4-small" style="float: right;">
+                  <ul class="actions">
+                     <li><a href="#" class="button primary icon"><i class="fas fa-search"></i></a></li>
+                  </ul>
+               <div class="col-0 col-8-small" style="float: right;">
+               </div>
+               </div>
+               
+               <div class="col-3 col-5-small" style="margin: 0 1em 0 0.5em; float: right;">
+                  <input type="email" name="demo-email" id="demo-email" value="" placeholder="ID나 이름을 입력하세요" />
+               </div>
+               <div class="col-7 col-7-small" style="float: right;">
+                   <select name="school-cate2" id="school-cate2">
+                     <option value="0">이름</option>
+                     <option value="1">ID</option>
+                  </select>
+               </div>
+            </div>
+   </form>
 <!-- 여기 내 내용 width; 872.443 height; 110.653-->
-<section style="padding-top: 20px; padding-bottom: 0px;">
-	<form>
-		<input type="text" name="search" placeholder="Search.."
-			id="searchText">
-	</form>
-</section>
-
 <section>
-	<div class="table-responsive-lg">
+   <div class="table-responsive-lg">
 
-		<table class="table" id="memberlistTop">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>이름</th>
-					<th>학교명</th>
-					<th>이메일</th>
-					<th>회원구분</th>
-					<th>가입여부</th>
-					<th>비고</th>
-				</tr>
-			</thead>
+      <table class="table" id="memberlistTop">
+         <thead>
+            <tr>
+               <th><input type="checkbox"><label for="msg1" style="padding-left: 0.1em;"></label></th>
+               <th>ID</th>
+               <th>이름</th>
+               <th>학교명</th>
+               <th>이메일</th>
+               <th>회원구분</th>
+               <th>가입여부</th>
+               <th>비고</th>
+            </tr>
+         </thead>
 
-			<!-- 잠시 임시! -->
-			<tbody id="memberlist">
-				<tr>
-					<td>mnmm97</td>
-					<td>조윤영</td>
-					<td>Harvard University</td>
-					<td>claire97j@naver.com</td>
-					<td>멘토</td>
-					<td>2019/06/25</td>
-					<td></td>
+         <!-- 잠시 임시! -->
+         <tbody id="memberlist">
+            <tr>
+               <td><input type="checkbox"><label for="msg1" style="padding-left: 0.1em;"></label></td>
+               <td>mnmm97</td>
+               <td>조윤영</td>
+               <td>Harvard University</td>
+               <td>claire97j@naver.com</td>
+               <td>멘토<img src="images/crowns.png" width="30" height="30"></td>
+               <td>2019/06/25</td>
+               <td>
+                  <input type="button" value="수정/삭제" id="modifyBtn">
+               </td>
 
-				</tr>
-				<tr>
-					<td>makmirae</td>
-					<td>박미래</td>
-					<td>Oxford University</td>
-					<td>mirae@gmail.com</td>
-					<td>학생</td>
-					<td>2019/03/03</td>
-					<td><input type="button" value="멘토승인" id="allowBtn"></td>
-				</tr>
-			</tbody>
+            </tr>
+            <tr>
+               <td><input type="checkbox"><label for="msg1" style="padding-left: 0.1em;"></label></td>
+               <td>makmirae</td>
+               <td>박미래</td>
+               <td>Oxford University</td>
+               <td>mirae@gmail.com</td>
+               <td>학생</td>
+               <td>2019/03/03</td>
+               <td>
+                  <input type="button" value="수정/삭제" id="modifyBtn">
+                  <input type="button" value="멘토승인" id="allowBtn">
+               </td>
+            </tr>
+         </tbody>
 
-		</table>
-	</div>
+      </table>
+   </div>
 </section>
 <%@ include file="/template/sidebar.jsp"%>
+<%@ include file="/template/footer.jsp"%>
