@@ -24,8 +24,7 @@ $(document).ready(function() {
 <!-- title -->
 <table width="100%" cellpadding="0" cellspacing="0" border="0">
 	<tr>
-		<td><img src="${root}/img/board/m_icon_board.gif" width="9"
-			height="9" border="0" align="absmiddle" style="margin-top: -2px">
+		<td><img src="${root}/img/board/m_icon_board.gif" width="9" height="9" border="0" align="absmiddle" style="margin-top: -2px">
 		<b>자유게시판</b> &nbsp;<font style="font-size: 8pt">|</font>&nbsp; 자유로운 글을
 		올리는 공간입니다<br>
 		</td>
