@@ -1,107 +1,115 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ include file="/template/header.jsp"%>
 
 <style>
-	#memberlist {
-		cursor: pointer;
-	}
-	
-	#searchText {
-		width: 130px;
-		box-sizing: border-box;
-		border: 2px solid #ccc;
-		border-radius: 4px;
-		font-size: 16px;
-		background-color: white;
-		background-image: url('');
-		background-position: 10px 10px;
-		background-repeat: no-repeat;
-		padding: 12px 20px 12px 40px;
-		-webkit-transition: width 0.4s ease-in-out;
-		transition: width 0.4s ease-in-out;
-	}
-	
-	#searchText {
-		width: 100%;
-	}
-	
-	#myModal {
-		display: none;
-	}
+   #memberlist {
+      cursor: pointer;
+   }
+   
+   #searchText {
+      width: 130px;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      background-color: white;
+      background-image: url('');
+      background-position: 10px 10px;
+      background-repeat: no-repeat;
+      padding: 12px 20px 12px 40px;
+      -webkit-transition: width 0.4s ease-in-out;
+      transition: width 0.4s ease-in-out;
+   }
+   
+   #searchText {
+      width: 100%;
+   }
+   
+   #myModal {
+      display: none;
+   }
 </style>
 
 <script type="text/javascript">
-
-// 참고 : http://demo.webslesson.info/bootstrap-crud-php/ 
-
 $(document).ready(function(){
-	$("tbody").click(function() {
-		//alert("학교정보 Click");
-		//$.noConflict(); // 에러 없애기....없어지니..?
-		window.open("/template/schoolmodify.jsp", "_blank", "width=600, height=700, left=500, top=20");
-		return false;
-	});
-	
-	$("#deleteBtn").click(function() {
-		alert("삭제고고");
-	});
+	alert('뀨');
 });
 
 </script>
 
 
 <!-- 여기 내 내용 width; 872.443 height; 110.653-->
-<section style="padding-top: 20px; padding-bottom: 0px;">
-	<form class="form-inline" action="">
-		<div style="display: inline-block;">
-			<input type="text" name="search" placeholder="학교이름을 입력해주세요" id="searchText" style="height: 43.99306px; width: 863.99306px;">
-		</div>
-		<div style="display: inline-block;">
-		<button type="button" id="searchBtn" class="btn btn-primary" sty>검색</button>
-		</div>
-	</form>
-</section>
+<!-- 
+   <section>
+   나중에 전체학교 수 등 정보 뿌리기
+   </section>
+-->
 
-<section>
-	<div class="table-responsive-lg">
-		<table class="table" id="memberlistTop">
-			<thead>
-				<tr>
-					<td>구분</td>
-					<th>학교유형</th>
-					<th>학교유형2</th>
-					<th>학교명</th>
-					<th>학교주소</th>
-					<th>현재 멘토수</th>
-					<th>비고</th>
-				</tr>
-			</thead>
+   <form class="form-inline" action="" style="padding-top: 50px; margin-bottom: 0px;">
+      <div class="col-9 col-12-small">
+               <div class="col-2 col-4-small" style="float: right;">
+                  <ul class="actions">
+                     <li><a href="#" class="button primary icon"><i class="fas fa-search"></i></a></li>
+                  </ul>
+               <div class="col-0 col-8-small" style="float: right;">
+               </div>
+               </div>
+               
+               <div class="col-3 col-5-small" style="margin: 0 1em 0 0.5em; float: right;">
+                  <input type="email" name="demo-email" id="demo-email" value="" placeholder="학교이름을 입력하세요" />
+               </div>
+               <div class="col-7 col-7-small" style="float: right;">
+                   <select name="school-cate2" id="school-cate2">
+                     <option value="0">ID</option>
+                     <option value="1">내용</option>
+                  </select>
+               </div>
+            </div>
+   </form>
 
-			<!-- 잠시 임시! -->
-			<tbody id="memberlist">
-				<tr>
-					<td>1</td>
-					<td>대학교</td>
-					<td>일반대학</td>
-					<td>University of Harvard</td>
-					<td>Holyoke Center, 1350 Massachusetts Avenue, Boston</td>
-					<td>35</td>
-					<td><button type="button" class="btn btn-primary" id="deleteBtn">삭제</button></td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>고등학교</td>
-					<td>과학고</td>
-					<td>서울과학고등학교</td>
-					<td>서울특별시 종로구 명륜1가 혜화로 63</td>
-					<td>1</td>
-					<td><button type="button" class="btn btn-primary" id="deleteBtn">삭제</button></td>
-				</tr>
-			</tbody>
+<section style="padding-top: 0px;">
+   <div class="table-responsive-lg">
+      <table class="table" id="memberlistTop">
+         <thead>
+            <tr>
+               <td><input type="checkbox"><label for="msg1" style="padding-left: 0.1em;"></label></td>
+               <td>구분</td>
+               <th>학교유형</th>
+               <th>학교유형2</th>
+               <th>학교명</th>
+               <th>학교주소</th>
+               <th>현재 멘토수</th>
+               <th>비고</th>
+            </tr>
+         </thead>
 
-		</table>
-	</div>
+         <!-- 잠시 임시! -->
+         <tbody id="memberlist">
+            <tr>
+               <td><input type="checkbox"><label for="msg1" style="padding-left: 0.1em;"></label></td>
+               <td>1</td>
+               <td>대학교</td>
+               <td>일반대학</td>
+               <td>University of Harvard</td>
+               <td>Holyoke Center, 1350 Massachusetts Avenue, Boston</td>
+               <td>35</td>
+               <td><button type="button" class="btn btn-primary" id="deleteBtn">삭제</button></td>
+            </tr>
+            <tr>
+               <td><input type="checkbox"><label for="msg1" style="padding-left: 0.1em;"></label></td>
+               <td>2</td>
+               <td>고등학교</td>
+               <td>과학고</td>
+               <td>서울과학고등학교</td>
+               <td>서울특별시 종로구 명륜1가 혜화로 63</td>
+               <td>1</td>
+               <td><button type="button" class="btn btn-primary" id="deleteBtn">삭제</button></td>
+            </tr>
+         </tbody>
+
+      </table>
+   </div>
 </section>
 
   <!-- The Modal -->
